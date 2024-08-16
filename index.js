@@ -1,9 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const ExperienceModel = require("./models/experience.model.js");
+
 const app = express();
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("This is default getaway new");
+});
+
+app.post("/experience", async (req, res) => {
+  try {
+    const expereince = await ExperienceModel.create(req.body);
+    res.status(200).json(expereince);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 mongoose
