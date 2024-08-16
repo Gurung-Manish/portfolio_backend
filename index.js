@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const experienceRoute = require("./routes/experience.route.js");
 const ExperienceModel = require("./models/experience.model.js");
 const e = require("express");
 
@@ -12,62 +13,8 @@ app.get("/", (req, res) => {
   res.send("This is default getaway new");
 });
 
-app.post("/experience", async (req, res) => {
-  try {
-    const expereince = await ExperienceModel.create(req.body);
-    res.status(200).json(expereince);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.get("/experience", async (req, res) => {
-  try {
-    const experiences = await ExperienceModel.find({});
-    res.status(200).json(experiences);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.get("/experience/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const experience = await ExperienceModel.findById(id);
-    res.status(200).json(experience);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.put("/experience/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const experience = await ExperienceModel.findByIdAndUpdate(id, req.body);
-
-    if (!experience) {
-      return res.status(404).json({ message: "Experience Not Found" });
-    }
-
-    const updatedExperience = await ExperienceModel.findById(id);
-    res.status(200).json(updatedExperience);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.delete("/experience/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const experience = await ExperienceModel.findByIdAndDelete(id);
-    if (!experience) {
-      return res.status(404).json({ message: "Data Not Found" });
-    }
-    res.status(200).json({ message: "Experience Deleted" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+//routes middle
+app.use("/api/experiences", experienceRoute);
 
 mongoose
   .connect(
