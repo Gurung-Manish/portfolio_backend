@@ -14,8 +14,8 @@ router.get("/:id", getEducation);
 
 router.post("/", addEducation);
 
-router.put("/", updateEducation);
+router.put("/:id", updateEducation);
 
 router.delete("/:id", deleteEducation);
 
-module.export = router;
+module.exports = router;

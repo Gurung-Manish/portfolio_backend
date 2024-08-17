@@ -31,15 +31,15 @@ const addEducation = async (req, res) => {
 const updateEducation = async (req, res) => {
   try {
     const { id } = req.params;
-    const education = await EducationModel.findByIdAndUpdate(id);
+    const education = await EducationModel.findByIdAndUpdate(id, req.body);
     if (!education) {
-      res.status(404).json({ message: "Education not found" });
+      return res.status(404).json({ message: "Education not found" });
     }
 
     const updatedEducation = await EducationModel.findById(id);
     res.status(200).json(updatedEducation);
   } catch (error) {
-    res, status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
