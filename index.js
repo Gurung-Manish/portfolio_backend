@@ -1,8 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const experienceRoute = require("./routes/experience.route.js");
-const ExperienceModel = require("./models/experience.model.js");
-const e = require("express");
 
 const app = express();
 

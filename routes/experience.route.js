@@ -1,5 +1,4 @@
 const express = require("express");
-const ExperienceModel = require("../models/experience.model.js");
 const router = express.Router();
 const {
   getExperiences,

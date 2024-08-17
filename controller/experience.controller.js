@@ -1,4 +1,4 @@
-const ExperienceModel = require(require("../models/experience.model.js"));
+const ExperienceModel = require("../models/experience.model.js");
 
 const getExperiences = async (req, res) => {
   try {
@@ -21,8 +21,8 @@ const getExperience = async (req, res) => {
 
 const addExperience = async (req, res) => {
   try {
-    const expereince = await ExperienceModel.create(req.body);
-    res.status(200).json(expereince);
+    const experience = await ExperienceModel.create(req.body);
+    res.status(200).json(experience);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
