@@ -15,7 +15,7 @@ router.get("/:id", getProject);
 
 router.post("/", addProject);
 
-router.put("/", updateProject);
+router.put("/:id", updateProject);
 
 router.delete("/:id", deleteProject);
 
