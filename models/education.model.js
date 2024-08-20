@@ -23,5 +23,5 @@ const EducationSchema = mongoose.Schema(
   { typestamps: true }
 );
 
-const EducationModel = mongoose.model("Education", EducationSchema);
+const EducationModel = mongoose.model("Education", EducationSchema); //this creates collection name in db
 module.exports = EducationModel;

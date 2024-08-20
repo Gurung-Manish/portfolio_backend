@@ -48,7 +48,7 @@ const deleteEducation = async (req, res) => {
     const { id } = req.params;
     const education = await EducationModel.findbyIdAndDelete(id);
     if (!education) {
-      res.status(404).json({ message: "Education data not found" });
+      return res.status(404).json({ message: "Education data not found" });
     }
     res.status(200).json({ message: "Education data deleted successfully" });
   } catch (error) {
