@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const experienceRoute = require("./routes/experience.route.js");
 const educationRoute = require("./routes/education.route.js");
+const projectRoute = require("./routes/project.route.js");
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.get("/", (req, res) => {
 app.use("/api/experiences", experienceRoute);
 
 app.use("/api/educations", educationRoute);
+
+app.use("/api/projects", projectRoute);
 
 mongoose
   .connect(
